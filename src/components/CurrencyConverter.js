@@ -4,12 +4,13 @@ import axios from "axios"
 
 const CurrencyConverter = () => {
     const currencies = ['EUR', 'USD', 'BTC', 'ETH', 'XRP', 'LTC', 'ADA', 'DOGE']
-    const [chosenPrimaryCurrency, SetChosenPrimaryCurrency] = useState('EUR')
+    const [chosenPrimaryCurrency, SetChosenPrimaryCurrency] = useState('BTC')
     const [chosenSecondaryCurrency, SetChosenSecondaryCurrency] = useState('EUR')
     const [amount, setAmount] = useState(1)
+    const [exchangeRate, setExchangeRate] = useState(0)
+    const [result, setResult] = useState(0)
 
-
-    console.log(amount)
+    console.log(chosenSecondaryCurrency)
 
     const convert = () => {
 
@@ -24,11 +25,15 @@ const CurrencyConverter = () => {
         }
 
         axios.request(options).then((response) => {
-            console.log(response.data);
-        }).catch( (error) => {
+            console.log(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
+            setExchangeRate(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
+            setResult(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'] * amount)
+        }).catch((error) => {
             console.error(error)
         })
     }
+
+    console.log(exchangeRate)
 
     return (
         <div className="currency-converter">
@@ -63,7 +68,8 @@ const CurrencyConverter = () => {
                                 <input
                                     type="number"
                                     name="currency-amount2"
-                                    value={""}
+                                    value={result}
+                                    disabled={true}
                                 />
                             </td>
                             <td>
@@ -84,7 +90,11 @@ const CurrencyConverter = () => {
             </div>
 
 
-            <ExchangeRate />
+            <ExchangeRate
+                exchangeRate={exchangeRate}
+                chosenPrimaryCurrency={chosenPrimaryCurrency}
+                chosenSecondaryCurrency={chosenSecondaryCurrency}
+            />
         </div>
     )
 }
