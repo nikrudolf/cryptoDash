@@ -1,4 +1,5 @@
 {
+  "homepage": "http://nikrudolf.github.io/cryptodash",
   "name": "crypto-api",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +17,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start:backend": "nodemon safety.js",
     "start:frontend": "react-scripts start",
     "build": "react-scripts build",
@@ -39,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "install": "^0.13.0"
   }
 }
