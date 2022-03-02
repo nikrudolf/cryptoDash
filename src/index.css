@@ -1,31 +1,107 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.app{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.app {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 
-.news-feed{
-  background-color: red;
+.app-wrapper {
+    display: flex;
 }
 
-.currency-converter{
-  background-color: lightblue;  
+.news-feed {
+    background-color: #F9F2C5;
+    padding: 10px;
+    margin: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 /0.2);
+    width: 500px;
 }
 
-.exchange-rate{
-  background-color: green;
+.currency-converter {
+    background-color: #C5CDF9;
+    padding: 10px;
+    margin: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 /0.2);
+    text-align: center;
+    width: 500px;
+}
+
+.exchange-rate {
+    background-color: #e6fce3;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgb(0 0 0 /0.2);
+}
+
+.input-box {
+    background-color: #CDF9C5;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgb(0 0 0 /0.2);
+}
+
+.headline {
+    font-size: large;
+    margin: 0;
+}
+
+.link {
+    font-size: small;
+    margin: 0;
+    color: #ad9fc7;
+}
+
+.news-feed-items{
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #e6fce3;
+    box-shadow: 0 3px 10px rgb(0 0 0 /0.2);
+    border-radius: 10px;
+}
+
+.news-feed-items:hover{
+    transform: scale(1.05);
+}
+
+button {
+    border: none;
+    float: inline-start;
+    margin: 2px;
+    background-color: #6BDB71;
+    opacity: 0.7;
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+button:hover {
+    opacity: 1;
+    transform:  scale(1.05);
+    cursor: pointer;
+}
+
+input,
+select {
+    border: none;
+}
+
+h2{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
 }

@@ -8,9 +8,10 @@ const CurrencyConverter = () => {
     const [chosenSecondaryCurrency, SetChosenSecondaryCurrency] = useState('EUR')
     const [amount, setAmount] = useState(1)
     const [exchangeRate, setExchangeRate] = useState(0)
+    const [primayCurrencyExchange, setPrimayCurrencyExchange] = useState('BTC')
+    const [secondaryCurrencyExchange, setSecondaryCurrencyExchange] = useState('EUR')
     const [result, setResult] = useState(0)
 
-    console.log(chosenSecondaryCurrency)
 
     const convert = () => {
 
@@ -28,22 +29,23 @@ const CurrencyConverter = () => {
             console.log(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
             setExchangeRate(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
             setResult(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'] * amount)
+            setPrimayCurrencyExchange(chosenPrimaryCurrency)
+            setSecondaryCurrencyExchange(chosenSecondaryCurrency)
         }).catch((error) => {
             console.error(error)
         })
     }
 
-    console.log(exchangeRate)
 
     return (
         <div className="currency-converter">
-            <h2>CurrencyConverter</h2>
+            <h2>Kryptowährungen Umrechner</h2>
 
-            <div className="Input-box">
+            <div className="input-box">
                 <table>
                     <tbody>
                         <tr>
-                            <td>Primary Currency:</td>
+                            <td>Ursprungswährung: </td>
                             <td>
                                 <input
                                     type="number"
@@ -63,7 +65,7 @@ const CurrencyConverter = () => {
                             </td>
                         </tr>
                         <tr>
-                            <td>Secondary Currency:</td>
+                            <td>Zielwährung: </td>
                             <td>
                                 <input
                                     type="number"
@@ -85,15 +87,15 @@ const CurrencyConverter = () => {
                     </tbody>
                 </table>
 
-                <button id="convert-button" onClick={convert}>Convert</button>
+                <button id="convert-button" onClick={convert}>Berechnen</button>
 
             </div>
 
 
             <ExchangeRate
                 exchangeRate={exchangeRate}
-                chosenPrimaryCurrency={chosenPrimaryCurrency}
-                chosenSecondaryCurrency={chosenSecondaryCurrency}
+                chosenPrimaryCurrency={primayCurrencyExchange}
+                chosenSecondaryCurrency={secondaryCurrencyExchange}
             />
         </div>
     )
